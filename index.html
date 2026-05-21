@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portfolio | DAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos externos para la hamburguesa -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Script para el modo claro y oscuro -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="header">
+    <nav class="nav container">
+        <a href="#" class="logo">Peter Montero</a>
+        <!-- Contenedor para agrupar switch y menú -->
+        <div class="nav-right">
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </label>
+            </div>
+
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <ul class="nav-menu">
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    <main class="container">
+        <!-- SECCIÓN SOBRE MÍ -->
+        <section id="sobre-mi" class="section sobre-mi">
+            <div class="sobre-mi-content">
+                <div class="texto-izq">
+                    <h1>Hola, soy Tecnico de DAM</h1>
+                    <p>Especialista en crear soluciones multiplataforma eficientes y escalables. Me apasiona el código limpio y la experiencia de usuario. Soy alguien proactivo y con capacidad de liderazgo. En mi tiempo libre me dedico a desarrollar proyectos personales, practicar deporte y ocio comun. En cuanto a mis idiomas me manejo bien con el ingles demostrando un nivel alto.</p>
+                    <div class="links-iconos">
+                        <a href="https://github.com/pttr44" target="_blank" aria-label="GitHub">
+                            <i class="fa-brands fa-github social-icon" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/peter-montero-nu%C3%B1ez/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                <div class="foto-der">
+                    <img src="/assets/imagenPorfolio.png" alt="Mi Foto" class="perfil-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN PROYECTOS (BENTO GRID ACTUALIZADO) -->
+        <section id="proyectos" class="section">
+            <h2 class="section-title no-underline">Proyectos</h2>
+            <div class="bento-grid">
+                
+                <a href="https://github.com/pablolarafalso-create/TrabajoIntermodular" target="_blank" class="card card-1">
+                    <img src="assets/imgAppDietas.png" alt="Imagen de app de dietas">
+                    <div class="info">
+                        <h3>App Gestión Dieta</h3>
+                        <p>Java & MySQL</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/pttr44/TeamTrip" target="_blank" class="card card-tall">
+                    <img src="assets/gestionDeViajes.png" alt="Proyecto 2">
+                    <div class="info"><h3>App gestion de viajes</h3><p>Java & MySQ</p></div>
+                </a>
+
+                <a href="" target="_blank" class="card">
+                    <img src="assets/presupuestosTaller.png" alt="Proyecto 4">
+                    <div class="info"><h3>Cooming soon</h3><p>Aplicacion para la creacion de presupuestos <br> (enfocado a talleres)</p></div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN FORMACIÓN + CONOCIMIENTOS (GRID HORIZONTAL) -->
+        <section class="section credenciales">
+            <div class="credenciales-grid">
+                <div id="formacion" class="credencial-col">
+                    <h2 class="section-title no-underline">Formación académica</h2>
+                    <ul class="formacion-list">
+                        <li><strong>Bachillerato</strong> — Instituto Santísimo Sacramento</li>
+                        <li><strong>FP de Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong> — The Power</li>
+                        <li><strong>Máster en Ciberseguridad</strong> — The Power</li>
+                    </ul>
+                </div>
+
+                <div id="conocimientos" class="credencial-col">
+                    <h2 class="section-title no-underline">Conocimiento tecnológico</h2>
+                    <div class="tags" aria-label="Tecnologías">
+                        <span class="tag">Java</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto" class="section contacto">
+            <div class="contacto-container">
+                <div class="contacto-info">
+                    <h2 class="contacto-title">CONTACTAME<span>.</span></h2>
+                    <p class="contacto-description">
+                        Si te interesan mis habilidades y quieres contactarme aqui te lo facilito.
+                    </p>
+                    
+                    <div class="contacto-items">
+                        <div class="contacto-item">
+                            <span class="item-label">EMAIL</span>
+                            <a href="mailto:pvteer47@gmail.com" class="item-value">pvteer47@gmail.com</a>
+                        </div>
+                        
+                        <div class="contacto-item">
+                            <span class="item-label">TELÉFONO</span>
+                            <a href="tel:+34665578341" class="item-value">+34 665 578 341</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contacto-card">
+                    <form action="https://formsubmit.co/pvteer47@gmail.com" method="POST" class="formulario">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input name="nombre" type="text" id="nombre" placeholder="Tu nombre..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" type="email" id="email" placeholder="tu@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea name="mensaje" id="mensaje" placeholder="Cuéntame sobre tu proyecto..." rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-enviar">Enviar mensaje</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Peter Montero - Desarrollador Multiplataforma</p>
+    </footer>
+
+</body>
+</html>

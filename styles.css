@@ -1,0 +1,793 @@
+﻿/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE (RESET)
+   ========================================================================== */
+:root {
+    /* Paleta (Modo Claro) — estilo “estudiante de diseño gráfico” */
+    --light: #fbfaf7;            /* papel claro */
+    --surface: #ffffff;
+    --surface-rgb: 255, 255, 255;
+    --surface-2: #f3f0ff;        /* lavanda suave */
+    --border: #e8e6f2;
+
+    --dark: #111827;             /* texto principal */
+    --gray: #4b5563;             /* texto secundario */
+
+    /* Acentos (más creativos) */
+    --primary: #ff4d6d;          /* coral/rosa */
+    --primary-hover: #ff2f56;
+    --primary-rgb: 255, 77, 109;
+
+    --accent: #22d3ee;           /* cian */
+    --accent-rgb: 34, 211, 238;
+    --accent-2: #8b5cf6;         /* violeta */
+    --accent-2-rgb: 139, 92, 246;
+
+    --card-bg: var(--surface);
+
+    /* Overlays/gradientes */
+    --grad-from-rgb: 59, 130, 246;  /* azul */
+    --grad-to-rgb: 139, 92, 246;    /* morado */
+    --page-glow: radial-gradient(900px 420px at 15% 0%, rgba(var(--accent-2-rgb), 0.16) 0%, transparent 55%),
+                 radial-gradient(700px 360px at 85% 10%, rgba(var(--accent-rgb), 0.14) 0%, transparent 55%),
+                 radial-gradient(850px 420px at 40% 95%, rgba(var(--primary-rgb), 0.10) 0%, transparent 60%);
+    --card-overlay: linear-gradient(180deg, #00000000 0%, #111827b3 70%);
+    --card-overlay-hover: linear-gradient(135deg, rgba(var(--grad-from-rgb), 0.92) 0%, rgba(var(--grad-to-rgb), 0.92) 100%);
+    --logo-gradient: linear-gradient(90deg, rgba(var(--grad-from-rgb), 1) 0%, rgba(var(--grad-to-rgb), 1) 100%);
+    --underline-gradient: linear-gradient(90deg, rgba(var(--grad-from-rgb), 0.95) 0%, rgba(var(--grad-to-rgb), 0.45) 100%);
+
+    --header-border: rgba(17, 24, 39, 0.08);
+
+    /* Perfil */
+    --profile-shadow: #2563eb; /* azul profesional (modo claro) */
+
+    /* Toggle */
+    --toggle-track: #9ca3af;
+    --toggle-thumb: #ffffff;
+
+    /* Contacto (mapea a la paleta) */
+    --bg-contacto: var(--surface-2);
+    --card-contacto: var(--surface);
+    --border-contacto: var(--border);
+    --text-contacto-title: var(--dark);
+    --text-contacto-muted: var(--gray);
+    --input-bg: var(--surface);
+    --input-border: var(--border);
+    --btn-bg: var(--primary);
+    --btn-text: #ffffff;
+    --placeholder: #9ca3af;
+}
+
+/* Variables para Modo Oscuro */
+[data-theme="dark"] {
+    /* Paleta (Modo Oscuro) */
+    --light: #0b0b10;
+    --surface: #12121a;
+    --surface-rgb: 18, 18, 26;
+    --surface-2: #171726;
+    --border: #27273a;
+
+    --dark: #f7f3ff;
+    --gray: #c7ccda;
+
+    /* Acentos (mantienen el look creativo) */
+    --primary: #ff4d6d;
+    --primary-hover: #ff2f56;
+    --primary-rgb: 255, 77, 109;
+
+    --accent: #22d3ee;
+    --accent-rgb: 34, 211, 238;
+    --accent-2: #a78bfa;
+    --accent-2-rgb: 167, 139, 250;
+
+    --card-bg: var(--surface);
+
+    /* Overlays/gradientes */
+    --grad-from-rgb: 59, 130, 246;  /* azul */
+    --grad-to-rgb: 167, 139, 250;   /* morado (más claro para oscuro) */
+    --page-glow: radial-gradient(900px 420px at 15% 0%, rgba(var(--accent-2-rgb), 0.22) 0%, transparent 55%),
+                 radial-gradient(700px 360px at 85% 10%, rgba(var(--accent-rgb), 0.18) 0%, transparent 55%),
+                 radial-gradient(850px 420px at 40% 95%, rgba(var(--primary-rgb), 0.14) 0%, transparent 60%);
+    --card-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.0) 0%, rgba(2, 6, 23, 0.78) 70%);
+    --card-overlay-hover: linear-gradient(135deg, rgba(var(--grad-from-rgb), 0.92) 0%, rgba(var(--grad-to-rgb), 0.90) 100%);
+    --logo-gradient: linear-gradient(90deg, rgba(var(--grad-from-rgb), 1) 0%, rgba(var(--grad-to-rgb), 1) 100%);
+    --underline-gradient: linear-gradient(90deg, rgba(var(--grad-from-rgb), 0.95) 0%, rgba(var(--grad-to-rgb), 0.45) 100%);
+
+    --header-border: rgba(255, 255, 255, 0.08);
+
+    /* Perfil */
+    --profile-shadow: #7c3aed; /* morado profesional (modo oscuro) */
+    
+    /* Ajustes específicos de contacto para modo oscuro */
+    --bg-contacto: var(--surface-2);
+    --card-contacto: var(--surface);
+    --border-contacto: var(--border);
+    --text-contacto-title: var(--dark);
+    --text-contacto-muted: var(--gray);
+    --input-bg: var(--surface-2);
+    --input-border: var(--border);
+    --btn-bg: var(--primary);
+    --btn-text: var(--dark);
+    --placeholder: #7a8190;
+
+    /* Toggle */
+    --toggle-track: #374151;
+    --toggle-thumb: #f3f1eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body { 
+    background-color: var(--light); 
+    color: var(--dark); 
+    line-height: 1.6; 
+    transition: background-color 0.4s ease, color 0.4s ease;
+    background-image: var(--page-glow);
+    background-attachment: fixed;
+}
+
+.logo:focus-visible,
+.nav-menu a:focus-visible,
+.btn-enviar:focus-visible,
+.formulario input:focus-visible,
+.formulario textarea:focus-visible {
+    outline: 3px solid rgba(var(--primary-rgb), 0.45);
+    outline-offset: 3px;
+}
+
+.container { 
+    max-width: 1100px; 
+    margin: auto; 
+    padding: 0 20px; 
+}
+
+.section { 
+    padding: 80px 0; 
+}
+
+.section-title { 
+    text-align: center; 
+    margin-bottom: 40px; 
+    font-size: 2rem; 
+    letter-spacing: -0.5px;
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 72%;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--underline-gradient);
+    filter: blur(0.2px);
+}
+
+.section-title.no-underline::after {
+    content: none;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVEGACIÓN
+   ========================================================================== */
+.header {
+    background: rgba(var(--surface-rgb), 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 1000;
+}
+
+[data-theme="dark"] .header {
+    background-color: rgba(var(--surface-rgb), 0.72);
+    color: var(--dark);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    text-decoration: none; 
+    background: var(--logo-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.nav-menu { 
+    display: flex; 
+    list-style: none; 
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--dark);
+    margin-left: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-menu li a:hover { 
+    color: var(--primary); 
+}
+
+[data-theme="dark"] .nav-menu li a { 
+    color: var(--dark); 
+}
+
+/* Hamburguesa oculta por defecto */
+#check, .checkbtn { 
+    display: none; 
+}
+
+.checkbtn {
+    font-size: 28px;
+    color: var(--dark); 
+    cursor: pointer;
+    z-index: 1100; 
+}
+
+/* ==========================================================================
+   3. INTERRUPTOR DE MODO OSCURO (TOGGLE)
+   ========================================================================== */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input { 
+    display: none; 
+}
+
+.slider {
+    background-color: var(--toggle-track);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+}
+
+.slider i {
+    font-size: 12px;
+    color: var(--toggle-thumb);
+    z-index: 1;
+}
+
+.slider:before {
+    background-color: var(--toggle-thumb);
+    bottom: 4px;
+    content: "";
+    height: 20px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 20px;
+    z-index: 2;
+}
+
+.slider.round { 
+    border-radius: 34px; 
+}
+
+.slider.round:before { 
+    border-radius: 50%; 
+}
+
+input:checked + .slider { 
+    background-color: var(--primary); 
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* ==========================================================================
+   4. SECCIÓN SOBRE MÍ
+   ========================================================================== */
+.sobre-mi-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.texto-izq { 
+    flex: 1; 
+}
+
+.texto-izq h1 { 
+    font-size: 3rem; 
+    margin-bottom: 20px; 
+}
+
+.links-iconos {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center; 
+    gap: 20px;
+}
+
+.links-iconos a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+}
+
+.links-iconos img { 
+    width: 40px; 
+    transition: transform 0.3s; 
+}
+
+.links-iconos .social-icon {
+    font-size: 40px;
+    line-height: 1;
+    color: var(--dark);
+    transition: transform 0.3s, color 0.2s;
+}
+
+[data-theme="dark"] .links-iconos .social-icon {
+    color: #ffffff;
+}
+
+.links-iconos a:hover img,
+.links-iconos a:hover .social-icon { 
+    transform: scale(1.1); 
+}
+
+.foto-der { 
+    flex: 1; 
+    text-align: right; 
+    margin-top: 25px; 
+}
+
+.perfil-img { 
+    width: 80%; 
+    border-radius: 20px; 
+    box-shadow: 20px 20px 0 var(--profile-shadow); 
+}
+
+/* ==========================================================================
+   5. SECCIÓN BENTO GRID (PROYECTOS)
+   ========================================================================== */
+.bento-grid {
+    display: grid;
+    /* Bento (3 tarjetas): una principal a la izquierda y 2 apiladas a la derecha */
+    grid-template-columns: 1.35fr 1fr;
+    grid-template-areas:
+        "main side1"
+        "main side2";
+    grid-auto-rows: 220px;
+    gap: 15px;
+}
+
+/* Asignación de áreas para las 3 tarjetas actuales */
+.bento-grid > a.card:nth-child(1) { grid-area: main; }
+.bento-grid > a.card:nth-child(2) { grid-area: side1; }
+.bento-grid > a.card:nth-child(3) { grid-area: side2; }
+
+/* Si alguna tarjeta mantiene clases de variación antiguas, que no rompa el layout de 3 */
+.bento-grid .card-wide { grid-column: auto; }
+.bento-grid .card-tall { grid-row: auto; }
+
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--card-bg);
+    color: var(--dark);
+}
+
+.card img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+.card .info {
+    position: absolute; 
+    bottom: 0; 
+    background: var(--card-overlay);
+    color: white; 
+    width: 100%; 
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+/* Variaciones Bento Grid */
+.card-wide { grid-column: span 2; }
+.card-tall { grid-row: span 2; }
+
+/* Animaciones de Tarjetas (Hover) */
+.bento-grid a.card {
+    text-decoration: none; 
+    display: block; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+    z-index: 10; 
+}
+
+.card:hover .info {
+    background: var(--card-overlay-hover); 
+}
+
+.card:hover img {
+    transform: scale(1.05); 
+}
+
+/* ==========================================================================
+   5.1 FORMACIÓN ACADÉMICA
+   ========================================================================== */
+.credenciales-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 22px;
+    align-items: start;
+}
+
+/* En el grid, los títulos van alineados a la izquierda */
+.credenciales-grid .section-title {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.formacion-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 900px;
+    display: grid;
+    gap: 14px;
+}
+
+.formacion-list li {
+    background: rgba(var(--surface-rgb), 0.72);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .formacion-list li {
+    background: rgba(var(--surface-rgb), 0.62);
+}
+
+.formacion-list strong {
+    color: var(--dark);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: start;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(var(--surface-rgb), 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--dark);
+    box-shadow: 0 10px 22px rgba(17, 24, 39, 0.06);
+}
+
+[data-theme="dark"] .tag {
+    background: rgba(var(--surface-rgb), 0.62);
+}
+
+/* ==========================================================================
+   6. SECCIÓN CONTACTO (ESTILO PREMIUM UI)
+   ========================================================================== */
+.contacto {
+    background-color: var(--bg-contacto);
+    padding: 100px 0;
+    transition: background-color 0.4s ease;
+}
+
+.contacto-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* Columna Izquierda: Información escrita */
+.contacto-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-contacto-title);
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.contacto-title span {
+    color: var(--primary); 
+}
+
+.contacto-description {
+    font-size: 1.1rem;
+    color: var(--text-contacto-muted);
+    line-height: 1.6;
+    margin-bottom: 45px;
+    max-width: 400px;
+}
+
+.contacto-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contacto-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-contacto-muted);
+    letter-spacing: 1px;
+}
+
+.item-value {
+    font-size: 1.15rem;
+    color: var(--text-contacto-title);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.item-value:hover {
+    color: var(--primary);
+}
+
+/* Columna Derecha: Tarjeta con Formulario */
+.contacto-card {
+    background: var(--card-contacto);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--border-contacto);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-contacto-title);
+}
+
+.formulario input, 
+.formulario textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: var(--input-bg);
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s, background-color 0.4s ease;
+}
+
+.formulario input::placeholder, 
+.formulario textarea::placeholder {
+    color: var(--placeholder);
+}
+
+.formulario input:focus, 
+.formulario textarea:focus {
+    border-color: var(--primary); 
+}
+
+.formulario textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Botón de Enviar */
+.btn-enviar {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+    margin-top: 10px;
+}
+
+.btn-enviar:hover {
+    background: var(--primary-hover);
+}
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
+.footer { 
+    padding: 40px; 
+    text-align: center; 
+    border-top: 1px solid var(--border); 
+}
+
+[data-theme="dark"] .footer {
+    border-top-color: var(--border);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (RESPONSIVO MÓVIL)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .checkbtn {
+        display: block; 
+    }
+
+    .sobre-mi-content {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .foto-der { order: -1; }
+    .texto-izq { order: 0; }
+
+    .texto-izq h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .foto-der {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .perfil-img {
+        width: min(320px, 90%);
+        box-shadow: 12px 12px 0 var(--primary);
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas: none;
+        grid-auto-rows: 220px;
+    }
+
+    .bento-grid > a.card:nth-child(1),
+    .bento-grid > a.card:nth-child(2),
+    .bento-grid > a.card:nth-child(3) {
+        grid-area: auto;
+    }
+
+    .card-wide { grid-column: auto; }
+    .card-tall { grid-row: auto; }
+
+    .credenciales-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formacion-list {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
+    }
+
+    .nav-menu {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: var(--light); 
+        top: 70px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        flex-direction: column;
+        padding-top: 50px;
+        z-index: 1050;
+    }
+
+    [data-theme="dark"] .nav-menu {
+        background-color: var(--light);
+    }
+
+    #check:checked ~ .nav-menu {
+        left: 0;
+    }
+
+    /* Ajustes responsivos para el nuevo contacto */
+    .contacto-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .contacto-title {
+        font-size: 2.8rem;
+    }
+    
+    .contacto-card {
+        padding: 25px;
+    }
+}
